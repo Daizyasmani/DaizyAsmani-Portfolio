@@ -30,7 +30,8 @@ const Pill = ({ active, children, onClick, ariaLabel }) => (
         className={`px-3 py-1.5 rounded-full text-sm font-medium transition
       ${active
                 ? "bg-slate-900 text-white shadow"
-                : "bg-white/70 text-slate-700 hover:bg-white shadow-sm border border-slate-200"}`}
+                : "bg-white/70 text-slate-700 hover:bg-white shadow-sm border border-slate-200"
+            }`}
     >
         {children}
     </button>
@@ -56,54 +57,110 @@ const LINKS = {
 };
 
 const SKILLS = [
-    "Python", "SQL", "Excel", "Power BI", "Tableau", "Flourish", "Jupyter", "VS Code",
-    "GitHub", ".NET", "C++", "NumPy", "Pandas", "Matplotlib", "Seaborn", "scikit-learn",
-    "Data Wrangling", "EDA", "Data Visualization", "Dashboard Design", "Data Storytelling",
-    "Power Query", "DAX", "Linear/Logistic Regression", "SVM", "Trees", "Random Forest",
-    "K-Means", "PCA", "MySQL", "SQLite",
+    "Python",
+    "SQL",
+    "Excel",
+    "Power BI",
+    "Tableau",
+    "Flourish",
+    "Jupyter",
+    "VS Code",
+    "GitHub",
+    ".NET",
+    "C++",
+    "NumPy",
+    "Pandas",
+    "Matplotlib",
+    "Seaborn",
+    "scikit-learn",
+    "Data Wrangling",
+    "EDA",
+    "Data Visualization",
+    "Dashboard Design",
+    "Data Storytelling",
+    "Power Query",
+    "DAX",
+    "Linear/Logistic Regression",
+    "SVM",
+    "Trees",
+    "Random Forest",
+    "K-Means",
+    "PCA",
+    "MySQL",
+    "SQLite",
 ];
 
 const PROJECTS = [
     {
-        id: "pbi_income", title: "Customer Income Prediction & Product Targeting",
-        blurb: "Star-schema (Customer, Product, Date, State), reproducible Power Query, DAX regression (slope, intercept, R²) and predicted-income cards with cross-filtered visuals.",
+        id: "pbi_income",
+        title: "Customer Income Prediction & Product Targeting",
+        blurb:
+            "Star-schema (Customer, Product, Date, State), reproducible Power Query, DAX regression (slope, intercept, R²) and predicted-income cards with cross-filtered visuals.",
         chips: ["Power BI", "DAX", "Power Query", "Predictive Analytics"],
-        links: [{ label: "Read Blog", href: LINKS.medium_income }], cat: "Power BI"
+        links: [{ label: "Read Blog", href: LINKS.medium_income }],
+        cat: "Power BI",
     },
     {
-        id: "pbi_ssbc", title: "Sales & Profitability Dashboard (SSBC)",
-        blurb: "Customer & product analysis across currencies with drilldowns; unit sales, margins, quarterly profitability; flags loss-making lines and top contributors.",
-        chips: ["Power BI", "DAX", "Executive Reporting"], links: [], cat: "Power BI"
+        id: "pbi_ssbc",
+        title: "Sales & Profitability Dashboard (SSBC)",
+        blurb:
+            "Customer & product analysis across currencies with drilldowns; unit sales, margins, quarterly profitability; flags loss-making lines and top contributors.",
+        chips: ["Power BI", "DAX", "Executive Reporting"],
+        links: [],
+        cat: "Power BI",
     },
     {
-        id: "tbl_youtube", title: "YouTube Trending Analysis",
-        blurb: "Interactive Tableau story exploring drivers of video popularity and regional viewing patterns.",
-        chips: ["Tableau", "Data Visualization"], links: [{ label: "Repo", href: LINKS.tableau_youtube }], cat: "Tableau"
+        id: "tbl_youtube",
+        title: "YouTube Trending Analysis",
+        blurb:
+            "Interactive Tableau story exploring drivers of video popularity and regional viewing patterns.",
+        chips: ["Tableau", "Data Visualization"],
+        links: [{ label: "Repo", href: LINKS.tableau_youtube }],
+        cat: "Tableau",
     },
     {
-        id: "tbl_ev", title: "Global Electric Vehicle Sales (Narrative)",
-        blurb: "Story highlights EV adoption trends by country and year; sketches → wireframes → final storyboard.",
-        chips: ["Tableau", "Data Storytelling"], links: [{ label: "Blog", href: LINKS.tableau_ev }], cat: "Tableau"
+        id: "tbl_ev",
+        title: "Global Electric Vehicle Sales (Narrative)",
+        blurb:
+            "Story highlights EV adoption trends by country and year; sketches → wireframes → final storyboard.",
+        chips: ["Tableau", "Data Storytelling"],
+        links: [{ label: "Blog", href: LINKS.tableau_ev }],
+        cat: "Tableau",
     },
     {
-        id: "flr_gdpco2", title: "Interactive GDP vs CO₂ (1990–2014)",
+        id: "flr_gdpco2",
+        title: "Interactive GDP vs CO₂ (1990–2014)",
         blurb: "Animated story exploring GDP and emissions over time with Flourish.",
-        chips: ["Flourish", "Animated Viz"], links: [{ label: "Open Story", href: LINKS.flourish_gdp_co2 }], cat: "Flourish"
+        chips: ["Flourish", "Animated Viz"],
+        links: [{ label: "Open Story", href: LINKS.flourish_gdp_co2 }],
+        cat: "Flourish",
     },
     {
-        id: "py_flights", title: "Flight Delay Trends USA",
-        blurb: "2M-row airline on-time dataset: seasonal patterns, cascading delays, airport-specific spikes; histograms, scatter, heatmaps.",
-        chips: ["Python", "Pandas", "Matplotlib", "Seaborn"], links: [{ label: "Repo", href: LINKS.py_flights }], cat: "Analysis"
+        id: "py_flights",
+        title: "Flight Delay Trends USA",
+        blurb:
+            "2M-row airline on-time dataset: seasonal patterns, cascading delays, airport-specific spikes; histograms, scatter, heatmaps.",
+        chips: ["Python", "Pandas", "Matplotlib", "Seaborn"],
+        links: [{ label: "Repo", href: LINKS.py_flights }],
+        cat: "Analysis",
     },
     {
-        id: "py_noshow", title: "No-Show Appointments Analysis",
-        blurb: "Wrangling, cleaning, demographics/behavior patterns; drivers include lead-time, extreme ages, SMS reminders, neighborhood risk.",
-        chips: ["Python", "EDA", "Matplotlib"], links: [{ label: "Repo", href: LINKS.py_noshow }], cat: "Analysis"
+        id: "py_noshow",
+        title: "No-Show Appointments Analysis",
+        blurb:
+            "Wrangling, cleaning, demographics/behavior patterns; drivers include lead-time, extreme ages, SMS reminders, neighborhood risk.",
+        chips: ["Python", "EDA", "Matplotlib"],
+        links: [{ label: "Repo", href: LINKS.py_noshow }],
+        cat: "Analysis",
     },
     {
-        id: "py_spygdp", title: "SPY–GDP Wrangling & Correlation",
-        blurb: "Merged SPY daily data with GDP growth; alignment & duplicate removal; correlation patterns across countries.",
-        chips: ["Python", "Pandas", "Seaborn"], links: [{ label: "Repo", href: LINKS.py_spy_gdp }], cat: "Analysis"
+        id: "py_spygdp",
+        title: "SPY–GDP Wrangling & Correlation",
+        blurb:
+            "Merged SPY daily data with GDP growth; alignment & duplicate removal; correlation patterns across countries.",
+        chips: ["Python", "Pandas", "Seaborn"],
+        links: [{ label: "Repo", href: LINKS.py_spy_gdp }],
+        cat: "Analysis",
     },
 ];
 
@@ -111,29 +168,52 @@ const WRITING = [
     {
         title: "Predicting Customer Income & Smarter Product Targeting with Power BI",
         chips: ["Power BI", "DAX", "Case study"],
-        blurb: "End-to-end: data shaping → star schema → DAX regression & correlation → cross-filters → product targeting.",
-        href: LINKS.medium_income
+        blurb:
+            "End-to-end: data shaping → star schema → DAX regression & correlation → cross-filters → product targeting.",
+        href: LINKS.medium_income,
     },
     {
         title: "The Dashboard Diaries: What the Superstore Data Really Says",
         chips: ["Tableau", "Data Viz"],
-        blurb: "Targeted retail questions with sketches → wireframes → final dashboard for crisp insights.",
-        href: LINKS.tableau_ev
+        blurb:
+            "Targeted retail questions with sketches → wireframes → final dashboard for crisp insights.",
+        href: LINKS.tableau_ev,
     },
     {
         title: "From Zero to Charging Hero: Exploring Global EV Sales with Interactive Dashboards",
         chips: ["Tableau", "Storytelling"],
-        blurb: "Narrative exploration of EV adoption trends by country, year, and policy context; highlights and takeaways.",
-        href: LINKS.tableau_ev
+        blurb:
+            "Narrative exploration of EV adoption trends by country, year, and policy context; highlights and takeaways.",
+        href: LINKS.tableau_ev,
     },
 ];
 
 const CERTS = [
-    { src: certUdPBI, alt: "Udacity: Data Analysis & Visualization with Microsoft Power BI (Nanodegree, 2025)", href: "https://www.udacity.com/certificate/e/e02ab110-46eb-11f0-b3ea-5f2a54e90891" },
-    { src: certUdViz, alt: "Udacity: Data Visualization (Nanodegree, 2025)", href: "https://www.udacity.com/certificate/e/58303094-fdd2-11ef-ab81-8f8dee4ad0a9" },
-    { src: certUdDA, alt: "Udacity: Data Analyst (Nanodegree, 2025)", href: "https://www.udacity.com/certificate/e/d9e6f41e-e8ac-11ef-ac40-738ef4037dc6" },
-    { src: certCourseraML, alt: "DeepLearning.AI & Stanford: Machine Learning Specialization (2023)", href: "https://coursera.org/verify/specialization/GHPRC6AGX9N4" },
-    { src: certCourseraMath, alt: "DeepLearning.AI: Mathematics for Machine Learning & Data Science (2023)", href: "https://coursera.org/verify/specialization/ETXWZ64AYNDF" },
+    {
+        src: certUdPBI,
+        alt: "Udacity: Data Analysis & Visualization with Microsoft Power BI (Nanodegree, 2025)",
+        href: "https://www.udacity.com/certificate/e/e02ab110-46eb-11f0-b3ea-5f2a54e90891",
+    },
+    {
+        src: certUdViz,
+        alt: "Udacity: Data Visualization (Nanodegree, 2025)",
+        href: "https://www.udacity.com/certificate/e/58303094-fdd2-11ef-ab81-8f8dee4ad0a9",
+    },
+    {
+        src: certUdDA,
+        alt: "Udacity: Data Analyst (Nanodegree, 2025)",
+        href: "https://www.udacity.com/certificate/e/d9e6f41e-e8ac-11ef-ac40-738ef4037dc6",
+    },
+    {
+        src: certCourseraML,
+        alt: "DeepLearning.AI & Stanford: Machine Learning Specialization (2023)",
+        href: "https://coursera.org/verify/specialization/GHPRC6AGX9N4",
+    },
+    {
+        src: certCourseraMath,
+        alt: "DeepLearning.AI: Mathematics for Machine Learning & Data Science (2023)",
+        href: "https://coursera.org/verify/specialization/ETXWZ64AYNDF",
+    },
     { src: certDL_NNDL, alt: "DeepLearning.AI: Neural Networks and Deep Learning", href: "https://coursera.org/verify/PWKKB8CSL4KA" },
     { src: certDL_IDNN, alt: "DeepLearning.AI: Improving Deep Neural Networks", href: "https://coursera.org/verify/S3WLSH3GPH2M" },
     { src: certDL_STRUCT, alt: "DeepLearning.AI: Structuring Machine Learning Projects", href: "https://coursera.org/verify/ZUAH3MSRPAF6" },
@@ -147,8 +227,18 @@ export default function App() {
     const [certsOpen, setCertsOpen] = useState(true);
     const [sidebarOpen, setSidebarOpen] = useState(false);
 
-    const SEC_IDS = ["about", "skills", "experience", "education", "Certifications", "projects", "writing", "contact"];
-    const [activeSection, setActiveSection] = useState(SEC_IDS[0]);
+    // ✅ Use ids + labels; "certs" matches the section id below
+    const SECTIONS = [
+        { id: "about", label: "About" },
+        { id: "skills", label: "Skills" },
+        { id: "experience", label: "Experience" },
+        { id: "education", label: "Education" },
+        { id: "certs", label: "Certifications" },
+        { id: "projects", label: "Projects" },
+        { id: "writing", label: "Writing" },
+        { id: "contact", label: "Contact" },
+    ];
+    const [activeSection, setActiveSection] = useState(SECTIONS[0].id);
 
     const filtered = useMemo(
         () => (filter === "All" ? PROJECTS : PROJECTS.filter((p) => p.cat === filter)),
@@ -159,8 +249,8 @@ export default function App() {
     useEffect(() => {
         const onScroll = () => {
             const y = window.scrollY + 96; // header offset
-            let current = SEC_IDS[0];
-            for (const id of SEC_IDS) {
+            let current = SECTIONS[0].id;
+            for (const { id } of SECTIONS) {
                 const el = document.getElementById(id);
                 if (el && el.offsetTop <= y) current = id;
             }
@@ -179,10 +269,6 @@ export default function App() {
         window.scrollTo({ top, behavior: "smooth" });
         setSidebarOpen(false);
     };
-
-    const dotCls = (id) =>
-        `block h-2 w-2 rounded-full transition ${activeSection === id ? "bg-slate-900" : "bg-slate-300"
-        }`;
 
     return (
         <div className="relative min-h-screen text-slate-800">
@@ -212,9 +298,6 @@ export default function App() {
                 </div>
             </header>
 
-            {/* Left rail (dots) — removed per your request; keeping container for spacing */}
-            <aside className="hidden" />
-
             {/* Sidebar Drawer */}
             {sidebarOpen && (
                 <div
@@ -238,7 +321,8 @@ export default function App() {
                                 ✕
                             </button>
                         </div>
-                        {SEC_IDS.map((id) => (
+
+                        {SECTIONS.map(({ id, label }) => (
                             <a
                                 key={id}
                                 href={`#${id}`}
@@ -248,9 +332,10 @@ export default function App() {
                                         : "hover:bg-slate-100 text-slate-700"
                                     }`}
                             >
-                                {id.charAt(0).toUpperCase() + id.slice(1)}
+                                {label}
                             </a>
                         ))}
+
                         <div className="pt-4 flex gap-2">
                             <a
                                 href={LINKS.linkedin}
@@ -319,11 +404,19 @@ export default function App() {
                                 <dl className="grid sm:grid-cols-2 gap-x-8 gap-y-3 text-sm">
                                     <div>
                                         <dt className="text-slate-500 uppercase tracking-wide text-[11px]">Email</dt>
-                                        <dd><a className="underline" href="mailto:daizyasmani@gmail.com">daizyasmani@gmail.com</a></dd>
+                                        <dd>
+                                            <a className="underline" href="mailto:daizyasmani@gmail.com">
+                                                daizyasmani@gmail.com
+                                            </a>
+                                        </dd>
                                     </div>
                                     <div>
                                         <dt className="text-slate-500 uppercase tracking-wide text-[11px]">Phone</dt>
-                                        <dd><a className="underline" href="tel:+13128894006">+1 (312) 889-4006</a></dd>
+                                        <dd>
+                                            <a className="underline" href="tel:+13128894006">
+                                                +1 (312) 889-4006
+                                            </a>
+                                        </dd>
                                     </div>
                                     <div>
                                         <dt className="text-slate-500 uppercase tracking-wide text-[11px]">Location</dt>
@@ -363,11 +456,13 @@ export default function App() {
                 <section id="skills" className="mb-12 scroll-mt-24">
                     <h2 className="text-xl font-semibold h2-underline">Skills</h2>
                     <div className="mt-3 flex flex-wrap gap-2">
-                        {SKILLS.map((s) => <Tag key={s}>{s}</Tag>)}
+                        {SKILLS.map((s) => (
+                            <Tag key={s}>{s}</Tag>
+                        ))}
                     </div>
                 </section>
 
-                {/* Experience (Differenz only, per resume) */}
+                {/* Experience */}
                 <section id="experience" className="mb-12 scroll-mt-24">
                     <h2 className="text-xl font-semibold h2-underline">Experience</h2>
                     <div className="mt-4 space-y-4">
@@ -444,31 +539,44 @@ export default function App() {
 
                 {/* Projects */}
                 <section id="projects" className="mb-14 mt-12 scroll-mt-24">
-                    <div className={`rounded-2xl transition shadow-sm border ${projectsOpen ? "border-slate-200 bg-white/90 backdrop-blur ring-1 ring-slate-200/60" : "border-transparent"}`}>
+                    <div
+                        className={`rounded-2xl transition shadow-sm border ${projectsOpen
+                                ? "border-slate-200 bg-white/90 backdrop-blur ring-1 ring-slate-200/60"
+                                : "border-transparent"
+                            }`}
+                    >
+                        {/* ✅ Mobile-friendly pill row & Hide button */}
                         <div className="flex items-center justify-between flex-wrap gap-3 px-4 pt-4">
                             <h2 className="text-xl font-semibold h2-underline">Projects</h2>
-                            <div className="flex items-center gap-2">
-                                {["All", "Power BI", "Tableau", "Flourish", "Analysis"].map((c) => (
-                                    <Pill
-                                        key={c}
-                                        active={projectsOpen && filter === c}
-                                        onClick={() => {
-                                            if (c === "All") {
-                                                setProjectsOpen((prev) => !prev);
-                                                setFilter("All");
-                                            } else if (projectsOpen) {
-                                                setFilter(c);
-                                            }
-                                        }}
-                                        ariaLabel={`Filter by ${c}`}
-                                    >
-                                        {c}
-                                    </Pill>
-                                ))}
+
+                            <div className="flex w-full sm:w-auto sm:flex-none sm:items-center gap-2">
+                                <div className="flex gap-2 overflow-x-auto no-scrollbar w-full sm:w-auto [-webkit-overflow-scrolling:touch]">
+                                    {["All", "Power BI", "Tableau", "Flourish", "Analysis"].map((c) => (
+                                        <Pill
+                                            key={c}
+                                            active={projectsOpen && filter === c}
+                                            onClick={() => {
+                                                if (c === "All") {
+                                                    setProjectsOpen((prev) => !prev);
+                                                    setFilter("All");
+                                                } else if (projectsOpen) {
+                                                    setFilter(c);
+                                                }
+                                            }}
+                                            ariaLabel={`Filter by ${c}`}
+                                        >
+                                            {c}
+                                        </Pill>
+                                    ))}
+                                </div>
+
                                 {projectsOpen && (
                                     <button
-                                        className="ml-2 px-3 py-1.5 rounded-md text-sm border border-slate-200 bg-white hover:bg-slate-50 shadow-sm"
-                                        onClick={() => { setProjectsOpen(false); setFilter("All"); }}
+                                        className="sm:ml-2 sm:self-auto sm:mt-0 mt-2 px-3 py-1.5 rounded-md text-sm border border-slate-200 bg-white hover:bg-slate-50 shadow-sm"
+                                        onClick={() => {
+                                            setProjectsOpen(false);
+                                            setFilter("All");
+                                        }}
                                         title="Collapse projects"
                                     >
                                         Hide Projects
@@ -484,7 +592,10 @@ export default function App() {
                                 </div>
                                 <button
                                     className="mt-3 rounded-md bg-slate-900 text-white px-3 py-2 text-sm font-medium shadow hover:bg-slate-800"
-                                    onClick={() => { setProjectsOpen(true); setFilter("All"); }}
+                                    onClick={() => {
+                                        setProjectsOpen(true);
+                                        setFilter("All");
+                                    }}
                                 >
                                     Show All Projects
                                 </button>
@@ -494,7 +605,7 @@ export default function App() {
                                 {filtered.map((p) => (
                                     <article
                                         key={p.id}
-                                        className="rounded-2xl border border-slate-200 bg-white/80 backdrop-blur p-5 shadow-sm"
+                                        className="rounded-2xl border border-slate-200 bg-white/80 backdrop-blur p-4 sm:p-5 shadow-sm"
                                     >
                                         <div className="flex items-center justify-between gap-3">
                                             <h3 className="font-semibold">{p.title}</h3>
@@ -502,7 +613,9 @@ export default function App() {
                                         </div>
                                         <p className="mt-2 text-[15px] leading-relaxed">{p.blurb}</p>
                                         <div className="mt-3 flex flex-wrap gap-2">
-                                            {p.chips.map((c) => <Tag key={c}>{c}</Tag>)}
+                                            {p.chips.map((c) => (
+                                                <Tag key={c}>{c}</Tag>
+                                            ))}
                                         </div>
                                         {p.links?.length ? (
                                             <div className="mt-4 flex gap-2">
@@ -528,7 +641,12 @@ export default function App() {
 
                 {/* Writing */}
                 <section id="writing" className="mb-16 scroll-mt-24">
-                    <div className={`rounded-2xl transition shadow-sm border ${writingOpen ? "border-slate-200 bg-white/90 backdrop-blur ring-1 ring-slate-200/60" : "border-transparent"}`}>
+                    <div
+                        className={`rounded-2xl transition shadow-sm border ${writingOpen
+                                ? "border-slate-200 bg-white/90 backdrop-blur ring-1 ring-slate-200/60"
+                                : "border-transparent"
+                            }`}
+                    >
                         <div className="flex items-center justify-between px-4 pt-4">
                             <h2 className="text-xl font-semibold h2-underline">Writing</h2>
                             <div className="flex items-center gap-2">
@@ -573,7 +691,9 @@ export default function App() {
                                     >
                                         <h3 className="font-semibold">{w.title}</h3>
                                         <div className="mt-2 flex flex-wrap gap-2">
-                                            {w.chips.map((c) => <Tag key={c}>{c}</Tag>)}
+                                            {w.chips.map((c) => (
+                                                <Tag key={c}>{c}</Tag>
+                                            ))}
                                         </div>
                                         <p className="mt-2 text-[15px] leading-relaxed">{w.blurb}</p>
                                         <div className="mt-4">
@@ -636,9 +756,7 @@ export default function App() {
                             </a>
                         </div>
                     </div>
-                    <p className="mt-4 text-[13px] text-slate-500">
-                        © {new Date().getFullYear()} Daizy Asmani
-                    </p>
+                    <p className="mt-4 text-[13px] text-slate-500">© {new Date().getFullYear()} Daizy Asmani</p>
                 </section>
             </main>
         </div>

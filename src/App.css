@@ -99,3 +99,14 @@ html {
         background: linear-gradient(90deg, #94a3b8, rgba(148,163,184,0));
         border-radius: 2px;
     }
+
+/* hide scrollbars for the mobile pill row */
+.no-scrollbar {
+    -ms-overflow-style: none; /* IE/Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+/* Chrome/Safari */
