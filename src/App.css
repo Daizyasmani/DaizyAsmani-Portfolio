@@ -1,0 +1,101 @@
+/* ========== Global helpers (small polish) ========== */
+html, body, #root {
+    height: 100%;
+}
+
+body {
+    background: #f8fafc;
+}
+
+/* Optional: native smooth scrolling (JS does it too, but this helps) */
+html {
+    scroll-behavior: smooth;
+}
+
+/* ========== Animated mesh background ========== */
+.mesh-blobs {
+    position: fixed;
+    inset: 0;
+    z-index: -30;
+    pointer-events: none;
+    background: radial-gradient(60rem 60rem at -10% -20%, #c4b5fd33, transparent 40%), radial-gradient(80rem 80rem at 110% 0%, #93c5fd33, transparent 42%), radial-gradient(70rem 70rem at 40% 120%, #6ee7b733, transparent 45%), linear-gradient(180deg, #f8fafc, #ffffff);
+    animation: blobs-move 18s ease-in-out infinite alternate;
+}
+
+@keyframes blobs-move {
+    0% {
+        filter: hue-rotate(0deg) saturate(1);
+        transform: translateY(0px);
+    }
+
+    50% {
+        filter: hue-rotate(12deg) saturate(1.08);
+        transform: translateY(-6px);
+    }
+
+    100% {
+        filter: hue-rotate(24deg) saturate(1.15);
+        transform: translateY(0px);
+    }
+}
+
+/* ========== Soft grid overlay ========== */
+.bg-grid {
+    position: fixed;
+    inset: 0;
+    z-index: -25;
+    pointer-events: none;
+    opacity: 0.18;
+    background: linear-gradient(to right, rgba(0,0,0,0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.06) 1px, transparent 1px);
+    background-size: 22px 22px;
+}
+
+/* ========== Film grain noise (super subtle) ========== */
+.bg-noise {
+    position: fixed;
+    inset: 0;
+    z-index: -20;
+    pointer-events: none;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='table' tableValues='0 0 0 0 0 0 0.3 0'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 140px 140px;
+}
+
+/* ========== Gradient headline text ========== */
+.gradient-text {
+    background: linear-gradient(92deg, #0f172a 0%, #1e293b 30%, #334155 60%, #0f172a 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* ========== Circular photo with glow ring ========== */
+.ring-gradient {
+    position: relative;
+    padding: 6px; /* ring thickness */
+    border-radius: 9999px;
+    background: conic-gradient(from 180deg at 50% 50%, #a78bfa, #60a5fa, #34d399, #a78bfa);
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.12), 0 2px 6px rgba(15, 23, 42, 0.06);
+}
+
+    .ring-gradient > img {
+        border-radius: 9999px;
+        display: block;
+    }
+
+/* ========== Underline for section headings ========== */
+.h2-underline {
+    position: relative;
+    padding-bottom: 6px;
+}
+
+    .h2-underline::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 2px;
+        width: 64px;
+        background: linear-gradient(90deg, #94a3b8, rgba(148,163,184,0));
+        border-radius: 2px;
+    }
