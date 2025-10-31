@@ -444,10 +444,14 @@ export default function App() {
                     <h2 className="text-xl font-semibold h2-underline">About</h2>
                     <div className="mt-3 rounded-2xl border border-slate-200 bg-white/70 backdrop-blur p-5 shadow-sm">
                         <p className="leading-relaxed">
-                            I translate complex data into crisp dashboards and concise narratives. With a background
-                            in mobile app engineering, I bring a product mindset and strong version-control discipline.
-                            Recent work includes predictive DAX models for income targeting, 6-month seasonality tracking
-                            with moving averages/variance, and storytelling visuals that surface actionable patterns at a glance.
+                            I’m a Data Analyst with a prior software-engineering stint (Xamarin.Forms, MVVM) at Differenz Systems.
+                            I hold an <strong>M.S. in IT (Gold Medalist)</strong>, am based in Milwaukee, WI, and have an active
+                            <strong> H4 EAD (no sponsorship required)</strong>. I work end-to-end in <strong>Power BI</strong>
+                            (DAX, Power Query), <strong>Python</strong> (Pandas, NumPy, scikit-learn), <strong>SQL</strong>,
+                            <strong> Tableau</strong>, and <strong>Excel</strong> shaping raw data into star schemas and
+                            model-aware visuals (regression/correlation cards, Predictive analytics) with solid Git/GitHub discipline.
+                            I’m seeking Data Analyst/BI roles (including returnships) where dashboards and data stories directly
+                            influence decisions; open to US-based hybrid or remote and ready to start.
                         </p>
                     </div>
                 </section>
@@ -473,9 +477,16 @@ export default function App() {
                             </div>
                             <div className="text-sm text-slate-500 mt-1">2019 – 2021 • India</div>
                             <ul className="mt-3 list-disc pl-5 space-y-1 text-[15px]">
-                                <li>Built cross-platform apps with MVVM; created reusable UI components and shared services.</li>
-                                <li>Integrated REST APIs, authentication, and offline sync; improved crash-free sessions and startup time.</li>
-                                <li>Collaborated with design on accessible UX; led sprint demos and delivered releases on schedule.</li>
+                                <li>Built cross-platform Android and iOS apps using Xamarin.Forms, implementing MVVM architecture, SQLite offline
+                                    storage, and dynamic JSON API integrations.</li>
+                                <li>Designed responsive UIs with UI Kit, Auto Layout, Stack Views, and enhanced UX with Lottie animations, multilingual
+                                    support, and advanced Syncfusion components.</li>
+                                <li>Integrated camera functionality, file uploads, and popups for seamless user experiences; customized layouts using
+                                    FlowDirection and Sharpnado.Shadows.</li>
+                                <li>Delivered projects like Patient Diary, Bankiom, and ExpenseSOS on Agile sprints, collaborating directly with clients and
+                                    managing version control with SourceTree.</li>
+                                <li>Researched and implemented new Xamarin features during internship phase, contributing to full-stack mobile app
+                                    development from prototyping to release.</li>
                             </ul>
                         </div>
                     </div>
