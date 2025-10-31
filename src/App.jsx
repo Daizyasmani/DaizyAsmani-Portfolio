@@ -147,7 +147,7 @@ export default function App() {
     const [certsOpen, setCertsOpen] = useState(true);
     const [sidebarOpen, setSidebarOpen] = useState(false);
 
-    const SEC_IDS = ["about", "skills", "experience", "education", "certs", "projects", "writing", "contact"];
+    const SEC_IDS = ["about", "skills", "experience", "education", "Certifications", "projects", "writing", "contact"];
     const [activeSection, setActiveSection] = useState(SEC_IDS[0]);
 
     const filtered = useMemo(
