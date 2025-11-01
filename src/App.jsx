@@ -82,8 +82,10 @@ const SKILLS = [
     "DAX",
     "Linear/Logistic Regression",
     "SVM",
-    "Trees",
+    "Decision Trees",
     "Random Forest",
+    "XGBoost",
+    "Neural Networks",
     "K-Means",
     "PCA",
     "MySQL",
@@ -368,10 +370,7 @@ export default function App() {
                                 Hi, I’m Daizy Asmani
                             </h1>
                             <p className="mt-4 max-w-3xl text-base sm:text-lg leading-7 sm:leading-8">
-                                Data Analyst with 2+ years of prior software engineering experience (Xamarin.Forms).
-                                I build end-to-end analytical workflows and interactive dashboards in Python/SQL and
-                                Power BI/Tableau with DAX/Power Query for feature engineering and clear, model-aware visuals.
-                                I care about narratives that turn messy, multi-source data into decisions.
+                                I turn messy, multi-source data into decision-ready dashboards. End-to-end with Python/SQL and Power BI/Tableau (DAX, Power Query) to build clean ETL, clear visuals, and actionable insights.
                             </p>
 
                             <div className="mt-4 flex flex-wrap gap-2">
@@ -447,9 +446,9 @@ export default function App() {
                             I’m a Data Analyst with a prior software-engineering stint (Xamarin.Forms, MVVM) at Differenz Systems.
                             I hold an <strong>M.S. in IT (Gold Medalist)</strong>, am based in Milwaukee, WI, and have an active
                             <strong> H4 EAD (no sponsorship required)</strong>. I work end-to-end in <strong>Power BI</strong>
-                            (DAX, Power Query), <strong>Python</strong> (Pandas, NumPy, scikit-learn), <strong>SQL</strong>,
+                             (DAX, Power Query), <strong>Python</strong> (Pandas, NumPy, scikit-learn), <strong>SQL</strong>,
                             <strong> Tableau</strong>, and <strong>Excel</strong> shaping raw data into star schemas and
-                            model-aware visuals (regression/correlation cards, Predictive analytics) with solid Git/GitHub discipline.
+                            model-aware visuals (regression/correlation cards, predictive analytics) with solid Git/GitHub discipline.
                             I’m seeking Data Analyst/BI roles (including returnships) where dashboards and data stories directly
                             influence decisions; open to US-based hybrid or remote and ready to start.
                         </p>
@@ -497,7 +496,7 @@ export default function App() {
                     <h2 className="text-xl font-semibold h2-underline">Education</h2>
                     <div className="mt-3 rounded-2xl border border-slate-200 bg-white/75 backdrop-blur p-5 shadow-sm">
                         <p className="text-[15px]">
-                            <span className="font-medium">M.S. in Information Technology (Gold Medalist)</span>, Auro University, India (2018–2022)
+                            <span className="font-medium">M.S. in Information Technology (Gold Medalist)</span>, Auro University, India (2018–2020)
                             <br />
                             <span className="font-medium">Udacity Nanodegrees (2025)</span> — Data Analyst, Data Visualization, Data Analysis & Visualization with Microsoft Power BI
                         </p>
