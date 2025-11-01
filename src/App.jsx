@@ -369,12 +369,9 @@ export default function App() {
                             <h1 className="gradient-text text-4xl sm:text-5xl font-extrabold tracking-tight">
                                 Hi, I’m Daizy Asmani
                             </h1>
-                            <p className="mt-4 max-w-3xl text-base sm:text-lg leading-7 sm:leading-8">
-                                I turn messy, multi-source data into decision-ready dashboards. End-to-end with Python/SQL and Power BI/Tableau (DAX, Power Query) to build clean ETL, clear visuals, and actionable insights.
-                            </p>
 
                             <div className="mt-4 flex flex-wrap gap-2">
-                                {["Python", "SQL", "Power BI", "Tableau", "scikit-learn"].map((s) => (
+                                {["Data Analyst", "Data Visualization", "Python", "SQL", "Power BI", "Tableau" ].map((s) => (
                                     <Tag key={s}>{s}</Tag>
                                 ))}
                             </div>
@@ -443,14 +440,7 @@ export default function App() {
                     <h2 className="text-xl font-semibold h2-underline">About</h2>
                     <div className="mt-3 rounded-2xl border border-slate-200 bg-white/70 backdrop-blur p-5 shadow-sm">
                         <p className="leading-relaxed">
-                            I’m a Data Analyst with a prior software-engineering stint (Xamarin.Forms, MVVM) at Differenz Systems.
-                            I hold an <strong>M.S. in IT (Gold Medalist)</strong>, am based in Milwaukee, WI, and have an active
-                            <strong> H4 EAD (no sponsorship required)</strong>. I work end-to-end in <strong>Power BI</strong>
-                             (DAX, Power Query), <strong>Python</strong> (Pandas, NumPy, scikit-learn), <strong>SQL</strong>,
-                            <strong> Tableau</strong>, and <strong>Excel</strong> shaping raw data into star schemas and
-                            model-aware visuals (regression/correlation cards, predictive analytics) with solid Git/GitHub discipline.
-                            I’m seeking Data Analyst/BI roles (including returnships) where dashboards and data stories directly
-                            influence decisions; open to US-based hybrid or remote and ready to start.
+                            I’m a Data Analyst with a prior software-engineering stint at Differenz Systems. I hold an M.S. in IT (Gold Medalist), am based in Milwaukee, WI, and moved to the U.S. in 2022; as an H4 spouse I wasn’t authorized to work, so I used that career break to complete Udacity Nanodegrees and Coursera/DeepLearning.AI certifications. I now have an active H4 EAD (fully work-authorized, no sponsorship required). I work end-to-end in Power BI (DAX, Power Query), Python (Pandas, NumPy, scikit-learn), SQL, Tableau, and Excel. Shaping raw data into star schemas and model-aware visuals (regression/correlation cards, predictive analytics) with solid Git/GitHub discipline. I’m seeking Data Analyst/BI roles (including returnships) where dashboards and data stories directly influence decisions; open to US-based hybrid or remote and ready to start.
                         </p>
                     </div>
                 </section>
