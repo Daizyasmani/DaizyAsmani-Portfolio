@@ -27,7 +27,7 @@ const Pill = ({ active, children, onClick, ariaLabel }) => (
         onClick={onClick}
         aria-pressed={active}
         aria-label={ariaLabel ?? String(children)}
-        className={`px-3 py-1.5 rounded-full text-sm font-medium transition ${active
+        className={`shrink-0 snap-start px-4 py-2 rounded-full text-sm font-medium transition ${active
                 ? "bg-slate-900 text-white shadow"
                 : "bg-white/70 text-slate-700 hover:bg-white shadow-sm border border-slate-200"
             }`}
@@ -35,6 +35,7 @@ const Pill = ({ active, children, onClick, ariaLabel }) => (
         {children}
     </button>
 );
+
 
 /* --- Social icons --- */
 const IconBtn = ({
@@ -312,7 +313,7 @@ const CERTS = [
     {
         src: certCourseraMath,
         alt: "DeepLearning.AI: Mathematics for Machine Learning & Data Science (2023)",
-        href: "https://coursera.org/verify/specialization/ETXWZ64AYNDF",
+        href: "https://coursera.org/verify/specialization/EKTWZ64AYNDF",
     },
     { src: certDL_NNDL, alt: "DeepLearning.AI: Neural Networks and Deep Learning", href: "https://coursera.org/verify/PWKKB8CSL4KA" },
     { src: certDL_IDNN, alt: "DeepLearning.AI: Improving Deep Neural Networks", href: "https://coursera.org/verify/S3WLSH3GPH2M" },
@@ -460,7 +461,7 @@ export default function App() {
                             </h1>
 
                             <div className="mt-4 flex flex-wrap gap-2">
-                                {["Data Analyst", "Data Visualization", "Python", "SQL", "Power BI", "Tableau"].map((s) => (
+                                {["Data Analyst", "Business Analyst", "Data Visualization", "Python", "SQL", "Power BI", "Tableau"].map((s) => (
                                     <Tag key={s}>{s}</Tag>
                                 ))}
                             </div>
@@ -528,7 +529,7 @@ export default function App() {
                     <h2 className="text-xl font-semibold h2-underline">About</h2>
                     <div className="mt-3 rounded-2xl border border-slate-200 bg-white/70 backdrop-blur p-5 shadow-sm">
                         <p className="leading-relaxed">
-                            I’m a Data Analyst with a prior software-engineering stint at Differenz Systems. I hold an M.S. in IT
+                            I’m a Data Analyst with a prior software-engineering stint at Differenz Systems, India. I hold an M.S. in IT
                             (Gold Medalist), am based in Milwaukee, WI, and moved to the U.S. in 2022; as an H4 spouse I wasn’t authorized
                             to work, so I used that career break to complete Udacity Nanodegrees and Coursera/DeepLearning.AI certifications.
                             I now have an active H4 EAD (fully work-authorized, no sponsorship required). I work end-to-end in Power BI
@@ -628,16 +629,37 @@ export default function App() {
                 </section>
 
                 {/* Projects */}
+                {/* Projects */}
                 <section id="projects" className="mb-14 mt-12 scroll-mt-24">
                     <div
-                        className={`rounded-2xl transition shadow-sm border ${projectsOpen ? "border-slate-200 bg-white/90 backdrop-blur ring-1 ring-slate-200/60" : "border-transparent"
+                        className={`rounded-2xl transition shadow-sm border ${projectsOpen
+                                ? "border-slate-200 bg-white/90 backdrop-blur ring-1 ring-slate-200/60"
+                                : "border-transparent"
                             }`}
                     >
-                        <div className="flex items-center justify-between flex-wrap gap-3 px-4 pt-4">
-                            <h2 className="text-xl font-semibold h2-underline">Projects</h2>
+                        {/* Header row + desktop Hide button */}
+                        <div className="px-4 pt-4">
+                            <div className="flex items-center justify-between gap-3">
+                                <h2 className="text-xl font-semibold h2-underline">Projects</h2>
 
-                            <div className="flex w-full sm:w-auto sm:flex-none sm:items-center gap-2">
-                                <div className="flex gap-2 overflow-x-auto no-scrollbar w-full sm:w-auto [-webkit-overflow-scrolling:touch]">
+                                {/* Desktop-only Hide button (keeps header tidy on mobile) */}
+                                {projectsOpen && (
+                                    <button
+                                        className="hidden sm:inline-flex px-3 py-1.5 rounded-md text-sm border border-slate-200 bg-white hover:bg-slate-50 shadow-sm"
+                                        onClick={() => {
+                                            setProjectsOpen(false);
+                                            setFilter("All");
+                                        }}
+                                        title="Collapse projects"
+                                    >
+                                        Hide Projects
+                                    </button>
+                                )}
+                            </div>
+
+                            {/* Chip strip: edge-to-edge, single line, scrollable on mobile */}
+                            <div className="mt-3 -mx-4 px-4">
+                                <div className="flex gap-2 overflow-x-auto no-scrollbar whitespace-nowrap snap-x snap-mandatory [-webkit-overflow-scrolling:touch]">
                                     {["All", "Power BI", "Tableau", "Flourish", "Analysis"].map((c) => (
                                         <Pill
                                             key={c}
@@ -656,20 +678,21 @@ export default function App() {
                                         </Pill>
                                     ))}
                                 </div>
-
-                                {projectsOpen && (
-                                    <button
-                                        className="sm:ml-2 sm:self-auto sm:mt-0 mt-2 px-3 py-1.5 rounded-md text-sm border border-slate-200 bg-white hover:bg-slate-50 shadow-sm"
-                                        onClick={() => {
-                                            setProjectsOpen(false);
-                                            setFilter("All");
-                                        }}
-                                        title="Collapse projects"
-                                    >
-                                        Hide Projects
-                                    </button>
-                                )}
                             </div>
+
+                            {/* Mobile-only Hide button below the chips so nothing wraps awkwardly */}
+                            {projectsOpen && (
+                                <button
+                                    className="sm:hidden mt-3 w-full rounded-md text-sm border border-slate-200 bg-white hover:bg-slate-50 shadow-sm px-3 py-2"
+                                    onClick={() => {
+                                        setProjectsOpen(false);
+                                        setFilter("All");
+                                    }}
+                                    title="Collapse projects"
+                                >
+                                    Hide Projects
+                                </button>
+                            )}
                         </div>
 
                         {!projectsOpen ? (
@@ -678,7 +701,7 @@ export default function App() {
                                     Project gallery is hidden. Click <span className="font-semibold">All</span> to show everything.
                                 </div>
                                 <button
-                                    className="mt-3 rounded-md bg-slate-900 text-white px-3 py-2 text-sm font-medium shadow hover:bg-slate-800"
+                                    className="mt-3 rounded-md bg-slate-900 text-white px-3 py-2 text-sm font-medium shadow hover:bg-slate-800 w-full sm:w-auto"
                                     onClick={() => {
                                         setProjectsOpen(true);
                                         setFilter("All");
@@ -690,7 +713,10 @@ export default function App() {
                         ) : (
                             <div className="mt-5 px-4 pb-4 grid grid-cols-1 md:grid-cols-2 gap-5">
                                 {filtered.map((p) => (
-                                    <article key={p.id} className="rounded-2xl border border-slate-200 bg-white/80 backdrop-blur p-4 sm:p-5 shadow-sm">
+                                    <article
+                                        key={p.id}
+                                        className="rounded-2xl border border-slate-200 bg-white/80 backdrop-blur p-4 sm:p-5 shadow-sm"
+                                    >
                                         <div className="flex items-center justify-between gap-3">
                                             <h3 className="font-semibold">{p.title}</h3>
                                             <Tag>{p.cat}</Tag>
@@ -735,6 +761,7 @@ export default function App() {
                         )}
                     </div>
                 </section>
+
 
                 {/* Writing */}
                 <section id="writing" className="mb-16 scroll-mt-24">
