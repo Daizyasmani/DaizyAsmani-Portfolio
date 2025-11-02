@@ -27,14 +27,63 @@ const Pill = ({ active, children, onClick, ariaLabel }) => (
         onClick={onClick}
         aria-pressed={active}
         aria-label={ariaLabel ?? String(children)}
-        className={`px-3 py-1.5 rounded-full text-sm font-medium transition
-      ${active
+        className={`px-3 py-1.5 rounded-full text-sm font-medium transition ${active
                 ? "bg-slate-900 text-white shadow"
                 : "bg-white/70 text-slate-700 hover:bg-white shadow-sm border border-slate-200"
             }`}
     >
         {children}
     </button>
+);
+
+/* --- Social icons --- */
+const IconBtn = ({
+    href,
+    label,
+    children,
+    className = "",
+    shapeClass = "rounded-full", // circle
+}) => (
+    <a
+        href={href}
+        target="_blank"
+        rel="noreferrer"
+        aria-label={label}
+        title={label}
+        className={`inline-flex h-10 w-10 items-center justify-center ${shapeClass} border border-slate-200 bg-white shadow-sm hover:bg-slate-50 ${className}`}
+    >
+        {children}
+    </a>
+);
+
+const LinkedInIcon = (props) => (
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" {...props}>
+        <path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V23h-4V8zM8 8h3.8v2.05h.06c.53-1 1.82-2.05 3.75-2.05 4.01 0 4.75 2.64 4.75 6.07V23h-4v-6.62c0-1.58-.03-3.62-2.21-3.62-2.21 0-2.55 1.73-2.55 3.52V23h-4V8z" />
+    </svg>
+);
+
+const GitHubIcon = (props) => (
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" {...props}>
+        <path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.93c.58.11.79-.25.79-.56v-2.08c-3.2.7-3.88-1.37-3.88-1.37-.53-1.35-1.28-1.71-1.28-1.71-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.2 1.77 1.2 1.03 1.77 2.71 1.26 3.37.96.11-.75.4-1.26.72-1.55-2.56-.29-5.25-1.28-5.25-5.7 0-1.26.45-2.3 1.2-3.11-.12-.3-.52-1.51.11-3.14 0 0 .98-.31 3.2 1.19a10.9 10.9 0 0 1 5.82 0c2.22-1.5 3.2-1.19 3.2-1.19.63 1.63.23 2.84.11 3.14.75.81 1.2 1.85 1.2 3.11 0 4.43-2.7 5.4-5.27 5.69.41.35.77 1.05.77 2.12v3.14c0 .31.21.68.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5z" />
+    </svg>
+);
+
+/* Medium icon (white button like others, crisp centered "M") */
+const MediumIcon = ({ size = 18 }) => (
+    <svg viewBox="0 0 24 24" width={size} height={size} aria-hidden="true">
+        <text
+            x="12"
+            y="12"
+            textAnchor="middle"
+            dominantBaseline="central"
+            fontFamily="Georgia, 'Times New Roman', Times, serif"
+            fontWeight="700"
+            fontSize={size * 0.9}
+            fill="currentColor"
+        >
+            M
+        </text>
+    </svg>
 );
 
 /* ============================== CONTENT ============================= */
@@ -92,12 +141,20 @@ const SKILLS = [
     "SQLite",
 ];
 
+/* ========= Updated with resume-style details ========= */
 const PROJECTS = [
     {
         id: "pbi_income",
         title: "Customer Income Prediction & Product Targeting",
         blurb:
-            "Star-schema (Customer, Product, Date, State), reproducible Power Query, DAX regression (slope, intercept, R²) and predicted-income cards with cross-filtered visuals.",
+            "Star-schema modeling with predictive DAX to quantify Sales ↔ Income and surface product recommendations.",
+        details: [
+            "Built a star-schema (Customer, Product, Date, State) and reproducible Power Query pipeline from multi-source data.",
+            "Implemented DAX regression (Slope, Intercept, R²) to quantify Sales → Income and exposed predicted-income measures/cards.",
+            "Designed interactive visuals (histogram, scatter, map) with cross-filters for Income Bands, state trends, and customer segments.",
+            "Added 3- & 6-month moving averages, variance and StdDev to explain seasonality and volatility.",
+            "Authored “Recommended Product” logic that ranks SKUs by Target Price Band × Rating × Returns for marketing actions.",
+        ],
         chips: ["Power BI", "DAX", "Power Query", "Predictive Analytics"],
         links: [{ label: "Read Blog", href: LINKS.medium_income }],
         cat: "Power BI",
@@ -106,8 +163,15 @@ const PROJECTS = [
         id: "pbi_ssbc",
         title: "Sales & Profitability Dashboard (SSBC)",
         blurb:
-            "Customer & product analysis across currencies with drilldowns; unit sales, margins, quarterly profitability; flags loss-making lines and top contributors.",
-        chips: ["Power BI", "DAX", "Executive Reporting"],
+            "Executive Power BI reporting across currencies with drilldowns and profitability flags.",
+        details: [
+            "Built an end-to-end model analyzing customer- and product-level sales across USD/CAD.",
+            "Created DAX measures for unit sales, gross profit margins, and profitability by fiscal quarter and product type.",
+            "Enabled hierarchical drilldowns (Customer Type → Customer) and seasonal trends (year/month).",
+            "Integrated multiple sources (Excel, CSV, PDFs); applied relationships, transformations, and narrative visuals.",
+            "Flagged loss-making product lines and identified top contributors by average gross profit per serving.",
+        ],
+        chips: ["Power BI", "DAX", "Data Modeling", "Executive Reporting"],
         links: [],
         cat: "Power BI",
     },
@@ -115,7 +179,12 @@ const PROJECTS = [
         id: "tbl_youtube",
         title: "YouTube Trending Analysis",
         blurb:
-            "Interactive Tableau story exploring drivers of video popularity and regional viewing patterns.",
+            "Tableau story exploring drivers of video popularity and regional viewing patterns.",
+        details: [
+            "Performed exploratory analysis on trending videos to uncover cross-region behavior and content drivers.",
+            "Built interactive Tableau dashboards with filters and highlights to compare categories, engagement, and timing.",
+            "Documented methodology and findings for reproducibility and stakeholder walkthroughs.",
+        ],
         chips: ["Tableau", "Data Visualization"],
         links: [{ label: "Repo", href: LINKS.tableau_youtube }],
         cat: "Tableau",
@@ -124,7 +193,12 @@ const PROJECTS = [
         id: "tbl_ev",
         title: "Global Electric Vehicle Sales (Narrative)",
         blurb:
-            "Story highlights EV adoption trends by country and year; sketches → wireframes → final storyboard.",
+            "End-to-end narrative on EV adoption trends with sketches → wireframes → final storyboard.",
+        details: [
+            "Crafted a Tableau story narrating country-wise EV adoption over time with context on policies and market shifts.",
+            "Iterated from hand sketches to wireframes to polished story for crisp executive consumption.",
+            "Annotated highlights and year-over-year changes; delivered takeaways for non-technical readers.",
+        ],
         chips: ["Tableau", "Data Storytelling"],
         links: [{ label: "Blog", href: LINKS.tableau_ev }],
         cat: "Tableau",
@@ -132,7 +206,13 @@ const PROJECTS = [
     {
         id: "flr_gdpco2",
         title: "Interactive GDP vs CO₂ (1990–2014)",
-        blurb: "Animated story exploring GDP and emissions over time with Flourish.",
+        blurb:
+            "Animated Flourish story to explore GDP growth vs emissions trajectories.",
+        details: [
+            "Prepared long-format data for animated bubble timelines across countries and years.",
+            "Exposed tooltips, playhead, and annotations to spotlight diverging economic-emissions paths.",
+            "Published for web-embedding and portfolio storytelling.",
+        ],
         chips: ["Flourish", "Animated Viz"],
         links: [{ label: "Open Story", href: LINKS.flourish_gdp_co2 }],
         cat: "Flourish",
@@ -141,7 +221,13 @@ const PROJECTS = [
         id: "py_flights",
         title: "Flight Delay Trends USA",
         blurb:
-            "2M-row airline on-time dataset: seasonal patterns, cascading delays, airport-specific spikes; histograms, scatter, heatmaps.",
+            "2M-row airline on-time dataset — seasonal patterns, cascading delays, airport spikes.",
+        details: [
+            "Ran EDA/explanatory analysis on ~2M airline on-time records across carriers, seasons, airports, and time-of-day.",
+            "Explored univariate, bivariate, and multivariate relationships to isolate recurring bottlenecks.",
+            "Built visual narratives (histograms, bar charts, scatter, heatmaps) to reveal cascading delay effects and seasonal cancellation spikes.",
+            "Summarized insights into an analyst-ready report aligning findings with operational levers.",
+        ],
         chips: ["Python", "Pandas", "Matplotlib", "Seaborn"],
         links: [{ label: "Repo", href: LINKS.py_flights }],
         cat: "Analysis",
@@ -150,7 +236,13 @@ const PROJECTS = [
         id: "py_noshow",
         title: "No-Show Appointments Analysis",
         blurb:
-            "Wrangling, cleaning, demographics/behavior patterns; drivers include lead-time, extreme ages, SMS reminders, neighborhood risk.",
+            "Wrangling + visual analytics to explain demographic/behavioral drivers of no-shows.",
+        details: [
+            "Cleaned data: fixed invalid ages, corrected booking-after-appointment errors, converted timestamps, handled missing/duplicates.",
+            "Built modular Matplotlib visuals (histograms, bars, pies, correlation heatmaps).",
+            "Identified drivers: longer lead-time (>15 days), extreme ages (<20, >70), SMS reminders (~15% reduction when sent), high-risk neighborhoods (>30% no-shows).",
+            "Delivered an insight deck outlining interventions (reminder cadence, scheduling windows, neighborhood-specific outreach).",
+        ],
         chips: ["Python", "EDA", "Matplotlib"],
         links: [{ label: "Repo", href: LINKS.py_noshow }],
         cat: "Analysis",
@@ -159,7 +251,13 @@ const PROJECTS = [
         id: "py_spygdp",
         title: "SPY–GDP Wrangling & Correlation",
         blurb:
-            "Merged SPY daily data with GDP growth; alignment & duplicate removal; correlation patterns across countries.",
+            "Pipeline to merge SPY (Yahoo Finance) with GDP (World Bank) and probe macro-market links.",
+        details: [
+            "Engineered full pipeline combining SPY daily data with GDP growth (1994–2024).",
+            "Performed date alignment, duplicate removal, column standardization, and year-based merging.",
+            "Ran correlation analysis (Matplotlib/Seaborn) to surface country-specific relationships with SPY volatility (both positive and negative).",
+            "Packaged code and charts for reproducible, parameterized refresh.",
+        ],
         chips: ["Python", "Pandas", "Seaborn"],
         links: [{ label: "Repo", href: LINKS.py_spy_gdp }],
         cat: "Analysis",
@@ -224,12 +322,11 @@ const CERTS = [
 /* =============================== APP =============================== */
 export default function App() {
     const [filter, setFilter] = useState("All");
-    const [projectsOpen, setProjectsOpen] = useState(false);
+    const [projectsOpen, setProjectsOpen] = useState(true); // open by default so details show
     const [writingOpen, setWritingOpen] = useState(false);
     const [certsOpen, setCertsOpen] = useState(true);
     const [sidebarOpen, setSidebarOpen] = useState(false);
 
-    // ✅ Use ids + labels; "certs" matches the section id below
     const SECTIONS = [
         { id: "about", label: "About" },
         { id: "skills", label: "Skills" },
@@ -238,7 +335,6 @@ export default function App() {
         { id: "certs", label: "Certifications" },
         { id: "projects", label: "Projects" },
         { id: "writing", label: "Writing" },
-        { id: "contact", label: "Contact" },
     ];
     const [activeSection, setActiveSection] = useState(SECTIONS[0].id);
 
@@ -250,7 +346,7 @@ export default function App() {
     /* Scroll spy */
     useEffect(() => {
         const onScroll = () => {
-            const y = window.scrollY + 96; // header offset
+            const y = window.scrollY + 96;
             let current = SECTIONS[0].id;
             for (const { id } of SECTIONS) {
                 const el = document.getElementById(id);
@@ -302,12 +398,7 @@ export default function App() {
 
             {/* Sidebar Drawer */}
             {sidebarOpen && (
-                <div
-                    className="fixed inset-0 z-30"
-                    role="dialog"
-                    aria-modal="true"
-                    onClick={() => setSidebarOpen(false)}
-                >
+                <div className="fixed inset-0 z-30" role="dialog" aria-modal="true" onClick={() => setSidebarOpen(false)}>
                     <div className="absolute inset-0 bg-black/30" />
                     <nav
                         className="absolute left-0 top-0 h-full w-72 bg-white shadow-xl border-r border-slate-200 p-4 space-y-1"
@@ -329,9 +420,7 @@ export default function App() {
                                 key={id}
                                 href={`#${id}`}
                                 onClick={onNavClick(id)}
-                                className={`block rounded-md px-3 py-2 text-sm transition ${activeSection === id
-                                        ? "bg-slate-900 text-white"
-                                        : "hover:bg-slate-100 text-slate-700"
+                                className={`block rounded-md px-3 py-2 text-sm transition ${activeSection === id ? "bg-slate-900 text-white" : "hover:bg-slate-100 text-slate-700"
                                     }`}
                             >
                                 {label}
@@ -366,38 +455,34 @@ export default function App() {
                 <section className="mb-10">
                     <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] items-start gap-6">
                         <div>
-                            <h1 className="gradient-text text-4xl sm:text-5xl font-extrabold tracking-tight">
+                            <h1 className="gradient-text pr-1 text-5xl sm:text-6xl font-extrabold leading-[1.15] tracking-tight [text-wrap:balance]">
                                 Hi, I’m Daizy Asmani
                             </h1>
 
                             <div className="mt-4 flex flex-wrap gap-2">
-                                {["Data Analyst", "Data Visualization", "Python", "SQL", "Power BI", "Tableau" ].map((s) => (
+                                {["Data Analyst", "Data Visualization", "Python", "SQL", "Power BI", "Tableau"].map((s) => (
                                     <Tag key={s}>{s}</Tag>
                                 ))}
                             </div>
 
-                            <div className="mt-5 flex gap-3">
-                                <a
-                                    href={LINKS.medium}
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    className="rounded-md bg-white px-3 py-2 text-sm font-medium shadow-sm border border-slate-200 hover:bg-slate-50"
-                                >
-                                    Read My Blog
-                                </a>
-                                <a
-                                    href={LINKS.github}
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    className="rounded-md bg-white px-3 py-2 text-sm font-medium shadow-sm border border-slate-200 hover:bg-slate-50"
-                                >
-                                    View GitHub
-                                </a>
+                            {/* Social icons row */}
+                            <div className="mt-5 flex items-center gap-3">
+                                <IconBtn href={LINKS.linkedin} label="LinkedIn">
+                                    <LinkedInIcon />
+                                </IconBtn>
+                                <IconBtn href={LINKS.github} label="GitHub">
+                                    <GitHubIcon />
+                                </IconBtn>
+                                <IconBtn href={LINKS.medium} label="Medium">
+                                    <MediumIcon size={20} />
+                                </IconBtn>
                             </div>
 
-                            {/* quick facts */}
+                            {/* Contact card */}
                             <div className="mt-6 rounded-2xl border border-slate-200 bg-white/70 backdrop-blur p-4 shadow-sm">
-                                <dl className="grid sm:grid-cols-2 gap-x-8 gap-y-3 text-sm">
+                                <h2 className="text-base font-semibold">Contact</h2>
+
+                                <dl className="mt-3 grid sm:grid-cols-2 gap-x-8 gap-y-3 text-sm">
                                     <div>
                                         <dt className="text-slate-500 uppercase tracking-wide text-[11px]">Email</dt>
                                         <dd>
@@ -406,6 +491,7 @@ export default function App() {
                                             </a>
                                         </dd>
                                     </div>
+
                                     <div>
                                         <dt className="text-slate-500 uppercase tracking-wide text-[11px]">Phone</dt>
                                         <dd>
@@ -414,10 +500,12 @@ export default function App() {
                                             </a>
                                         </dd>
                                     </div>
+
                                     <div>
                                         <dt className="text-slate-500 uppercase tracking-wide text-[11px]">Location</dt>
                                         <dd>Milwaukee, WI</dd>
                                     </div>
+
                                     <div>
                                         <dt className="text-slate-500 uppercase tracking-wide text-[11px]">Visa Status</dt>
                                         <dd>H4 EAD (No sponsorship required)</dd>
@@ -440,7 +528,14 @@ export default function App() {
                     <h2 className="text-xl font-semibold h2-underline">About</h2>
                     <div className="mt-3 rounded-2xl border border-slate-200 bg-white/70 backdrop-blur p-5 shadow-sm">
                         <p className="leading-relaxed">
-                            I’m a Data Analyst with a prior software-engineering stint at Differenz Systems. I hold an M.S. in IT (Gold Medalist), am based in Milwaukee, WI, and moved to the U.S. in 2022; as an H4 spouse I wasn’t authorized to work, so I used that career break to complete Udacity Nanodegrees and Coursera/DeepLearning.AI certifications. I now have an active H4 EAD (fully work-authorized, no sponsorship required). I work end-to-end in Power BI (DAX, Power Query), Python (Pandas, NumPy, scikit-learn), SQL, Tableau, and Excel. Shaping raw data into star schemas and model-aware visuals (regression/correlation cards, predictive analytics) with solid Git/GitHub discipline. I’m seeking Data Analyst/BI roles (including returnships) where dashboards and data stories directly influence decisions; open to US-based hybrid or remote and ready to start.
+                            I’m a Data Analyst with a prior software-engineering stint at Differenz Systems. I hold an M.S. in IT
+                            (Gold Medalist), am based in Milwaukee, WI, and moved to the U.S. in 2022; as an H4 spouse I wasn’t authorized
+                            to work, so I used that career break to complete Udacity Nanodegrees and Coursera/DeepLearning.AI certifications.
+                            I now have an active H4 EAD (fully work-authorized, no sponsorship required). I work end-to-end in Power BI
+                            (DAX, Power Query), Python (Pandas, NumPy, scikit-learn), SQL, Tableau, and Excel. Shaping raw data into star
+                            schemas and model-aware visuals (regression/correlation cards, predictive analytics) with solid Git/GitHub
+                            discipline. I’m seeking Data Analyst/BI roles (including returnships) where dashboards and data stories
+                            directly influence decisions; open to US-based hybrid or remote and ready to start.
                         </p>
                     </div>
                 </section>
@@ -466,16 +561,11 @@ export default function App() {
                             </div>
                             <div className="text-sm text-slate-500 mt-1">2019 – 2021 • India</div>
                             <ul className="mt-3 list-disc pl-5 space-y-1 text-[15px]">
-                                <li>Built cross-platform Android and iOS apps using Xamarin.Forms, implementing MVVM architecture, SQLite offline
-                                    storage, and dynamic JSON API integrations.</li>
-                                <li>Designed responsive UIs with UI Kit, Auto Layout, Stack Views, and enhanced UX with Lottie animations, multilingual
-                                    support, and advanced Syncfusion components.</li>
-                                <li>Integrated camera functionality, file uploads, and popups for seamless user experiences; customized layouts using
-                                    FlowDirection and Sharpnado.Shadows.</li>
-                                <li>Delivered projects like Patient Diary, Bankiom, and ExpenseSOS on Agile sprints, collaborating directly with clients and
-                                    managing version control with SourceTree.</li>
-                                <li>Researched and implemented new Xamarin features during internship phase, contributing to full-stack mobile app
-                                    development from prototyping to release.</li>
+                                <li>Built cross-platform Android and iOS apps using Xamarin.Forms, implementing MVVM architecture, SQLite offline storage, and dynamic JSON API integrations.</li>
+                                <li>Designed responsive UIs with UI Kit, Auto Layout, Stack Views, and enhanced UX with Lottie animations, multilingual support, and advanced Syncfusion components.</li>
+                                <li>Integrated camera functionality, file uploads, and popups for seamless user experiences; customized layouts using FlowDirection and Sharpnado.Shadows.</li>
+                                <li>Delivered projects like Patient Diary, Bankiom, and ExpenseSOS on Agile sprints, collaborating directly with clients and managing version control with SourceTree.</li>
+                                <li>Researched and implemented new Xamarin features during internship phase, contributing to full-stack mobile app development from prototyping to release.</li>
                             </ul>
                         </div>
                     </div>
@@ -540,12 +630,9 @@ export default function App() {
                 {/* Projects */}
                 <section id="projects" className="mb-14 mt-12 scroll-mt-24">
                     <div
-                        className={`rounded-2xl transition shadow-sm border ${projectsOpen
-                                ? "border-slate-200 bg-white/90 backdrop-blur ring-1 ring-slate-200/60"
-                                : "border-transparent"
+                        className={`rounded-2xl transition shadow-sm border ${projectsOpen ? "border-slate-200 bg-white/90 backdrop-blur ring-1 ring-slate-200/60" : "border-transparent"
                             }`}
                     >
-                        {/* ✅ Mobile-friendly pill row & Hide button */}
                         <div className="flex items-center justify-between flex-wrap gap-3 px-4 pt-4">
                             <h2 className="text-xl font-semibold h2-underline">Projects</h2>
 
@@ -603,22 +690,32 @@ export default function App() {
                         ) : (
                             <div className="mt-5 px-4 pb-4 grid grid-cols-1 md:grid-cols-2 gap-5">
                                 {filtered.map((p) => (
-                                    <article
-                                        key={p.id}
-                                        className="rounded-2xl border border-slate-200 bg-white/80 backdrop-blur p-4 sm:p-5 shadow-sm"
-                                    >
+                                    <article key={p.id} className="rounded-2xl border border-slate-200 bg-white/80 backdrop-blur p-4 sm:p-5 shadow-sm">
                                         <div className="flex items-center justify-between gap-3">
                                             <h3 className="font-semibold">{p.title}</h3>
                                             <Tag>{p.cat}</Tag>
                                         </div>
                                         <p className="mt-2 text-[15px] leading-relaxed">{p.blurb}</p>
+
+                                        {/* tech chips */}
                                         <div className="mt-3 flex flex-wrap gap-2">
                                             {p.chips.map((c) => (
                                                 <Tag key={c}>{c}</Tag>
                                             ))}
                                         </div>
+
+                                        {/* resume-style bullets */}
+                                        {p.details?.length ? (
+                                            <ul className="mt-3 list-disc pl-5 space-y-1.5 text-[15px]">
+                                                {p.details.map((d, i) => (
+                                                    <li key={i}>{d}</li>
+                                                ))}
+                                            </ul>
+                                        ) : null}
+
+                                        {/* links */}
                                         {p.links?.length ? (
-                                            <div className="mt-4 flex gap-2">
+                                            <div className="mt-4 flex flex-wrap gap-2">
                                                 {p.links.map((l, i) => (
                                                     <a
                                                         key={i}
@@ -642,20 +739,13 @@ export default function App() {
                 {/* Writing */}
                 <section id="writing" className="mb-16 scroll-mt-24">
                     <div
-                        className={`rounded-2xl transition shadow-sm border ${writingOpen
-                                ? "border-slate-200 bg-white/90 backdrop-blur ring-1 ring-slate-200/60"
-                                : "border-transparent"
+                        className={`rounded-2xl transition shadow-sm border ${writingOpen ? "border-slate-200 bg-white/90 backdrop-blur ring-1 ring-slate-200/60" : "border-transparent"
                             }`}
                     >
                         <div className="flex items-center justify-between px-4 pt-4">
                             <h2 className="text-xl font-semibold h2-underline">Writing</h2>
                             <div className="flex items-center gap-2">
-                                <a
-                                    href={LINKS.medium}
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    className="text-sm text-slate-600 hover:text-slate-900"
-                                >
+                                <a href={LINKS.medium} target="_blank" rel="noreferrer" className="text-sm text-slate-600 hover:text-slate-900">
                                     View all on Medium
                                 </a>
                                 {writingOpen && (
@@ -672,9 +762,7 @@ export default function App() {
 
                         {!writingOpen ? (
                             <div className="px-4 pb-4">
-                                <div className="mt-3 text-sm text-slate-600">
-                                    Blog cards are hidden. Click the button to show recent posts.
-                                </div>
+                                <div className="mt-3 text-sm text-slate-600">Blog cards are hidden. Click the button to show recent posts.</div>
                                 <button
                                     className="mt-3 rounded-md bg-slate-900 text-white px-3 py-2 text-sm font-medium shadow hover:bg-slate-800"
                                     onClick={() => setWritingOpen(true)}
@@ -685,10 +773,7 @@ export default function App() {
                         ) : (
                             <div className="mt-5 px-4 pb-4 grid grid-cols-1 md:grid-cols-2 gap-5">
                                 {WRITING.map((w, idx) => (
-                                    <article
-                                        key={idx}
-                                        className="rounded-2xl border border-slate-200 bg-white/80 backdrop-blur p-5 shadow-sm"
-                                    >
+                                    <article key={idx} className="rounded-2xl border border-slate-200 bg-white/80 backdrop-blur p-5 shadow-sm">
                                         <h3 className="font-semibold">{w.title}</h3>
                                         <div className="mt-2 flex flex-wrap gap-2">
                                             {w.chips.map((c) => (
@@ -710,51 +795,6 @@ export default function App() {
                                 ))}
                             </div>
                         )}
-                    </div>
-                </section>
-
-                {/* Contact */}
-                <section id="contact" className="mb-6 scroll-mt-24">
-                    <h2 className="text-xl font-semibold h2-underline">Contact</h2>
-                    <div className="mt-3 grid gap-3 sm:flex sm:items-center sm:gap-4">
-                        <div className="text-[15px]">
-                            <div className="font-medium">
-                                <a className="underline" href="mailto:daizyasmani@gmail.com">
-                                    daizyasmani@gmail.com
-                                </a>
-                            </div>
-                            <div>
-                                <a className="underline" href="tel:+13128894006">
-                                    +1 (312) 889-4006
-                                </a>
-                            </div>
-                        </div>
-                        <div className="flex gap-2">
-                            <a
-                                href={LINKS.linkedin}
-                                target="_blank"
-                                rel="noreferrer"
-                                className="rounded-md border border-slate-200 bg-white px-3 py-1.5 text-sm shadow-sm hover:bg-slate-50"
-                            >
-                                LinkedIn
-                            </a>
-                            <a
-                                href={LINKS.github}
-                                target="_blank"
-                                rel="noreferrer"
-                                className="rounded-md border border-slate-200 bg-white px-3 py-1.5 text-sm shadow-sm hover:bg-slate-50"
-                            >
-                                GitHub
-                            </a>
-                            <a
-                                href={LINKS.medium}
-                                target="_blank"
-                                rel="noreferrer"
-                                className="rounded-md border border-slate-200 bg-white px-3 py-1.5 text-sm shadow-sm hover:bg-slate-50"
-                            >
-                                Medium
-                            </a>
-                        </div>
                     </div>
                     <p className="mt-4 text-[13px] text-slate-500">© {new Date().getFullYear()} Daizy Asmani</p>
                 </section>
