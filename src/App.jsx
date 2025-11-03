@@ -560,7 +560,7 @@ export default function App() {
                                 <h3 className="font-semibold">Software Engineer (Mobile – Xamarin.Forms)</h3>
                                 <span className="text-slate-500">• Differenz Systems</span>
                             </div>
-                            <div className="text-sm text-slate-500 mt-1">2019 – 2021 • India</div>
+                            <div className="text-sm text-slate-500 mt-1">2020 – 2022 • India</div>
                             <ul className="mt-3 list-disc pl-5 space-y-1 text-[15px]">
                                 <li>Built cross-platform Android and iOS apps using Xamarin.Forms, implementing MVVM architecture, SQLite offline storage, and dynamic JSON API integrations.</li>
                                 <li>Designed responsive UIs with UI Kit, Auto Layout, Stack Views, and enhanced UX with Lottie animations, multilingual support, and advanced Syncfusion components.</li>
