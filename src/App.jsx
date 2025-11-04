@@ -494,15 +494,6 @@ export default function App() {
                                     </div>
 
                                     <div>
-                                        <dt className="text-slate-500 uppercase tracking-wide text-[11px]">Phone</dt>
-                                        <dd>
-                                            <a className="underline" href="tel:+13128894006">
-                                                +1 (312) 889-4006
-                                            </a>
-                                        </dd>
-                                    </div>
-
-                                    <div>
                                         <dt className="text-slate-500 uppercase tracking-wide text-[11px]">Location</dt>
                                         <dd>Milwaukee, WI</dd>
                                     </div>
